@@ -146,10 +146,10 @@ var app = angular.module('heli', []).controller('helicon', function($scope, $com
         return ang;
     };
     $scope.getBladeAng = function(n) {
-        var ang = Math.cos(($scope.shaftCurRot + n) * Math.PI / 180) * (40 * Math.sin(($scope.tiltFB) * Math.PI / 180));
-        ang += Math.cos(($scope.shaftCurRot + n + 90) * Math.PI / 180) * (40 * Math.sin(($scope.tiltRL) * Math.PI / 180));
+        var ang = Math.cos(($scope.shaftCurRot + n) * Math.PI / 180) * $scope.tiltFB;
+        ang += Math.cos(($scope.shaftCurRot + n + 90) * Math.PI / 180) * $scope.tiltRL;
         //ang is now displacement of parent rod. now we need to convert this to a percentage of max rot
-        var maxDisp = 2 * Math.max(Math.abs((40 * Math.sin(($scope.tiltRL) * Math.PI / 180))), Math.abs((40 * Math.sin(($scope.tiltFB) * Math.PI / 180))));
+        var maxDisp = 2 * Math.max(Math.abs($scope.tiltRL), Math.abs($scope.tiltFB));
         ang += maxDisp / 2;
         if (n == 0) {
             console.log(ang,$scope.curBladeRot,ang,maxDisp)

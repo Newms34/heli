@@ -1,0 +1,7 @@
+box shadow attempt (to deal with css filter clipping):
+need to look into triangles as suplemental dist
+
+box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
+box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
+box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
+box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);

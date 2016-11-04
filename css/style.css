@@ -6,6 +6,10 @@ body {
   transform-style: preserve-3d;
   perspective: 1200px;
 }
+body{
+  /*transform:translateZ(-1000px);*/
+  /*background:#999;*/
+}
 #heli-main{
   left:30%;
   top:30%;
