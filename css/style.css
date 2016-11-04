@@ -34,3 +34,11 @@ body {
 .main-blade{
   transform-origin:0% 50%;
 }
+#inst{
+  width:15%;
+  padding:10px;
+  background:#fed;
+  position:fixed;
+  right:10px;
+  box-shadow: 4px 4px 5px #000;
+}

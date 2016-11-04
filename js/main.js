@@ -1,5 +1,6 @@
 var app = angular.module('heli', []).controller('helicon', function($scope, $compile) {
     $scope.shaftCurRot = 0;
+
     $scope.currEngSpeed = 0; //out of 200;
     $scope.rotX = 0;
     $scope.rotZ = 0;
@@ -90,7 +91,7 @@ var app = angular.module('heli', []).controller('helicon', function($scope, $com
         }
     };
     $scope.engOn = false;
-    window.onkeyup = function(e) {
+    window.onkeydown = function(e) {
         if (e.which == 83) {
             $scope.rotsOn = !$scope.rotsOn;
         } else if (e.which == 69) {
