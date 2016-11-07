@@ -1,0 +1,33 @@
+{
+  "name": "daveheli",
+  "description": "Helicopter simulation using CSS, dual phone control",
+  "main": "index.js",
+  "authors": [
+    "David Newman"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "game",
+    "helicopter",
+    "phone",
+    "API",
+    "websockets",
+    "collective",
+    "cyclic"
+  ],
+  "homepage": "https://github.com/newms34/heli",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.5.8",
+    "socket.io-client": "^1.5.1",
+    "bootbox.js": "^4.4.0"
+  }
+}
