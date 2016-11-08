@@ -39,7 +39,7 @@ io.on('connection', function(socket) {
     socket.on('newPhone', function(phone) {
         pendingPhoneCodes.push(phone);
         console.log('PHONES:',pendingPhoneCodes)
-    })
+    });
     socket.on('moveData', function(moveObj) {
         io.emit('outData', moveObj);
     });
@@ -51,7 +51,7 @@ io.on('connection', function(socket) {
             phoneObj.valid = false;
         }
         io.emit('phoneCheckResult', phoneObj)
-    })
+    });
     socket.on('registerPhones', function(p) {
         console.log('REGISTER PHONE SERVER',p)
         if (p.cyc) {
@@ -74,6 +74,10 @@ io.on('connection', function(socket) {
                 role: 'col'
             })
         }
+    });
+    socket.on('phoneOri',function(ori){
+        //just pipe thru to front end 
+        io.emit('oriToDesk',ori);
     })
 });
 io.on('error', function(err) {
