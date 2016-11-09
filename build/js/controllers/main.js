@@ -293,6 +293,7 @@ var app = angular.module('heli', []).controller('helicon', function($scope, movF
             } else {
                 $scope.curBladeRot = movFact.handlePhoneCol(ori);
             }
+            $scope.$apply();
         }
     });
 });
