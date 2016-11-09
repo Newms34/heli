@@ -85,7 +85,7 @@ io.on('error', function(err) {
 });
 
 //set port, or process.env if not local
-http.listen(process.env.PORT || 8080);
+http.listen(process.env.PORT || 9264);
 
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
