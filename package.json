@@ -4,6 +4,7 @@
     "description": "Helicopter simulation using CSS, dual phone control",
     "main": "index.js",
     "scripts": {
+        "postinstall":"bower install",
         "start": "nodemon app.js"
     },
     "keywords": [
