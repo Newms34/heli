@@ -1,0 +1,236 @@
+#plane-main {
+    left: 40%;
+    top: 40%;
+    position: absolute;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    #p-fuse {
+        transform-style: preserve-3d;
+        .fuse-panel {
+            transform-style: preserve-3d;
+            width: 100px;
+            height: 200px;
+            position: absolute;
+            &:nth-of-type(1) {
+                $sat: random(30)+30;
+                transform: rotateY(90deg) translateZ(50px);
+                background: hsl(0, 0%, $sat);
+                &:before {
+                    content: '';
+                    transform-origin: 100% 100%;
+                    position: absolute;
+                    width: 100px;
+                    height: 0px;
+                    top: -50px;
+                    left: 0px;
+                    border-bottom: 50px solid hsl(0, 0%, $sat);
+                    border-left: 16.6px solid transparent;
+                    border-right: 16.6px solid transparent;
+                    transform: rotateX(17.74deg);
+                }
+                &:after {
+                    transform-origin: 0% 0%;
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-top: 300px solid hsl(0, 0%, $sat);
+                    top: 200px;
+                    left: 0px;
+                    border-left: 100px solid transparent;
+                    transform: rotateX(-9.46deg);
+                }
+            }
+            &:nth-of-type(2) {
+                $sat: random(30)+30;
+                transform: rotateY(-90deg) translateZ(50px);
+                background: hsl(0, 0%, $sat);
+                &:before {
+                    content: '';
+                    transform-origin: 100% 100%;
+                    position: absolute;
+                    width: 100px;
+                    height: 0px;
+                    top: -50px;
+                    left: 0px;
+                    border-bottom: 50px solid hsl(0, 0%, $sat);
+                    border-left: 16.6px solid transparent;
+                    border-right: 16.6px solid transparent;
+                    transform: rotateX(17.74deg);
+                }
+                &:after {
+                    transform-origin: 0% 0%;
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-top: 300px solid hsl(0, 0%, $sat);
+                    top: 200px;
+                    left: 0px;
+                    border-right: 100px solid transparent;
+                    transform: rotateX(-9.46deg);
+                }
+            }
+            &:nth-of-type(3) {
+                $sat: random(30)+30;
+                transform: translateZ(50px);
+                background: hsl(0, 0%, $sat);
+                &:before {
+                    content: '';
+                    transform-origin: 100% 100%;
+                    position: absolute;
+                    width: 100px;
+                    height: 0px;
+                    top: -50px;
+                    left: 0px;
+                    border-bottom: 50px solid hsl(0, 0%, $sat);
+                    border-left: 16.6px solid transparent;
+                    border-right: 16.6px solid transparent;
+                    transform: rotateX(17.74deg);
+                }
+                &:after {
+                    transform-origin: 0% 0%;
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-top: 316px solid hsl(0, 0%, $sat);
+                    top: 200px;
+                    left: 0px;
+                    border-right: 50px solid transparent;
+                    border-left: 50px solid transparent;
+                    transform: rotateX(-18.43deg);
+                }
+            }
+            &:nth-of-type(4) {
+                $sat: random(30)+30;
+                transform: rotateY(180deg) translateZ(50px);
+                background: hsl(0, 0%, $sat);
+                &:before {
+                    content: '';
+                    transform-origin: 100% 100%;
+                    position: absolute;
+                    width: 100px;
+                    height: 0px;
+                    top: -50px;
+                    left: 0px;
+                    border-bottom: 50px solid hsl(0, 0%, $sat);
+                    border-left: 16.6px solid transparent;
+                    border-right: 16.6px solid transparent;
+                    transform: rotateX(17.74deg);
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 0;
+                    border-top: 300px solid hsl(0, 0%, $sat);
+                    top: 200px;
+                    left: 0px;
+                    border-left: 50px solid transparent;
+                    border-right: 50px solid transparent;
+                }
+            }
+        }
+    }
+    #wing-main {
+        position: absolute;
+        $sat: random(30)+30;
+        left: -350px;
+        transform: translateZ(-50px);
+        background: hsl(0, 0%, $sat);
+        transform-style: preserve-3d;
+        width: 800px;
+        height: 110px;
+        & #wing-front {
+            position: absolute;
+            $sat: random(30)+30;
+            background: hsl(0, 0%, $sat);
+            height: 4px;
+            width: 800px;
+            transform: translateZ(-2px) translateY(-2px) rotateX(90deg);
+        }
+        & #wing-top-front {
+            position: absolute;
+            $sat: random(30)+30;
+            background: hsl(0, 0%, $sat);
+            width: 800px;
+            height: 37px;
+            transform: translateZ(-4px) rotateX(-15.52deg);
+            transform-origin: 0% 0%;
+        }
+        & #wing-top-back {
+            position: absolute;
+            $sat: random(30)+30;
+            background: hsl(0, 0%, $sat);
+            width: 800px;
+            height: 74.67px;
+            transform: translateY(36px) translateZ(-14px) rotateX(7.696deg);
+            transform-origin: 0% 0%;
+        }
+        & #left-ailer {
+            transform: translateY(110px) translateX(460px);
+        }
+        & #right-ailer {
+            transform: translateY(110px);
+        }
+        & .ailer {
+            position: absolute;
+            transform-style: preserve-3d;
+            & .ailer-top {
+                $sat: random(30)+30;
+                background: hsl(0, 0%, $sat);
+                position: absolute;
+                width: 340px;
+                transform: translateZ(-4px) rotateX(7.696deg);
+                height: 29.86924705444305px;
+                transform-origin: 0% 0%;
+            }
+            & .ailer-bottom {
+                $sat: random(30)+30;
+                background: hsl(0, 0%, $sat);
+                position: absolute;
+                width: 340px;
+                height: 29.600201343898917px;
+                transform-origin: 0% 0%;
+            }
+        }
+    }
+    #tail-main {
+        transform-style: preserve-3d;
+        position: absolute;
+        $sat: random(30)+30;
+        background: hsl(0, 0%, $sat);
+        width: 300px;
+        height: 90px;
+        top: 0px;
+        transform: translateX(-100px) translateY(400px) translateZ(-50px);
+        & #vert-stab {
+            transform-style: preserve-3d;
+            position: absolute;
+            $sat: random(30)+30;
+            // background: hsl(0, 0%, $sat);
+            width: 100px;
+            height: 90px;
+            border-left: 110px solid hsl(0, 0%, $sat);
+            border-top: 75px solid transparent;
+            transform: rotateY(90deg) translateX(50px) translateY(0px) translateZ(100px);
+            & #rud {
+                transform-origin: 0% 0%;
+                height: 20px;
+                width: 110px;
+                $sat: random(30)+30;
+                background: hsl(0, 0%, $sat);
+                transform: translateY(15px) translateX(-110px);
+            }
+        }
+        & #elev {
+            transform-origin: 0% 0%;
+            $sat: random(30)+30;
+            background: hsl(0, 0%, $sat);
+            width: 300px;
+            height: 20px;
+            transform: translateY(90px);
+        }
+    }
+}

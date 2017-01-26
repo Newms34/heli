@@ -7,4 +7,7 @@ router.get('/',function(req,res,next){
 router.get('/m',function(req,res,next){
 	res.sendFile('mobile.html',{"root":'./views'});
 });
+router.get('/p',function(req,res,next){
+	res.sendFile('plane.html',{"root":'./views'});
+})
 module.exports=router;

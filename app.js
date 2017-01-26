@@ -34,7 +34,7 @@ var io = require('socket.io')(http);
 4.) send phone code + desktop UN to server. 
 5.) pipe thru to phone via phone code. Phone registers username of desktop.
 */
-var pendingPhoneCodes = ['dave123']; //list of phone codes that have not yet been assigned. Includes test phone code.
+var pendingPhoneCodes = ['dave123','dave321']; //list of phone codes that have not yet been assigned. Includes test phone code.
 io.on('connection', function(socket) {
     socket.on('newPhone', function(phone) {
         pendingPhoneCodes.push(phone);

@@ -1,5 +1,6 @@
 var socket = io();
-var app = angular.module('heli', []).controller('helicon', function($scope, movFact) {
+var app = angular.module('heli', []);
+app.controller('helicon', function($scope, movFact) {
     $scope.mobilecheck = function() {
         var check = false;
         (function(a) {

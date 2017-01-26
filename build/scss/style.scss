@@ -74,3 +74,45 @@ input[disabled]{
 .mob-pan{
     font-size:xx-large;
 }
+#fuse{
+    transform-style: preserve-3d;
+    position:absolute;
+}
+.fuse{
+    position:absolute;
+}
+#fuse-top{
+    background:#c89696;
+    width:220px;
+    height:450px;
+    transform:rotateX(90deg) translateY(20px) translateX(-110px);
+}
+#fuse-right{
+    background:#AD8282;
+    width:220px;
+    height:450px;
+    transform:rotateX(90deg) rotateY(90deg) translateY(19px) translateX(108.6px) translateZ(0.5px);
+}
+#fuse-left{
+    background:#BB8C8C;
+    width:220px;
+    height:450px;
+    transform:rotateX(90deg) rotateY(90deg) translateY(19px) translateX(108.6px) translateZ(-220px);
+}
+
+#fuse-bottom{
+    background:#B18585;
+    width:220px;
+    height:450px;
+    transform:rotateX(90deg) translateY(20px) translateX(-110px) translateZ(-218px);
+}
+
+#fuse-forehead{
+    width:220px;
+    height:0px;
+    border-bottom: 75px solid #B99696;
+    border-left:55px solid transparent;
+    border-right:55px solid transparent;
+    transform-origin:50% 100%;
+    transform:translateY(150px) translateX(-110px) translateZ(-204px) rotateX(120deg);
+}
