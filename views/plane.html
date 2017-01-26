@@ -10,10 +10,17 @@
 <body ng-app='heli' ng-controller='planecon' ng-cloak>
     <div id='plane-main' style='transform: translateZ(-100px) rotateX({{m.y}}deg) rotateY({{m.x}}deg);'>
         <div id='p-fuse'>
-            <div class='fuse-panel'>r</div>
-            <div class='fuse-panel'>l</div>
-            <div class='fuse-panel'>b</div>
-            <div class='fuse-panel'>t</div>
+            <div class='fuse-panel'></div>
+            <div class='fuse-panel'></div>
+            <div class='fuse-panel'></div>
+            <div class='fuse-panel'></div>
+            <div id='fuse-front'>
+                <div id='prop-shaft' style='transform: rotateZ({{propRot}}deg);'>
+                    <div id='prop-cyl-anchor'></div>
+                    <div id='propeller-left' style = 'filter:blur({{15*throt/200}}px)'></div>
+                    <div id='propeller-right' style = 'filter:blur({{15*throt/200}}px)'></div>
+                </div>
+            </div>
         </div>
         <div id='wing-main'>
             <div id='wing-front'></div>

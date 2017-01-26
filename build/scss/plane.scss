@@ -6,6 +6,46 @@
     perspective: 1500px;
     #p-fuse {
         transform-style: preserve-3d;
+        #fuse-front{
+            transform-origin:0% 0%;
+            transform-style: preserve-3d;
+            position:absolute;
+            $sat: random(30)+30;
+            background: hsl(0, 0%, $sat);
+            width:69px;
+            height:61.7px;
+            transform: rotateX(90deg) translateZ(50px) translateX(16px) translateY(-20px);
+            #prop-shaft{
+                transform-origin:50% 50%;
+                position:absolute;
+                left: 32px;
+                top:28.35px;
+                width:5px;
+                height:5px;
+                transform-style: preserve-3d;
+                background:#555;
+                & #prop-cyl-anchor{
+                    position:absolute;
+                    transform-style: preserve-3d;
+                }
+                & #propeller-left{
+                    position:absolute;
+                    transform-style: preserve-3d;
+                    transform:translateZ(10px) translateY(-5px);
+                    background:#222;
+                    width:100px;
+                    height:10px;
+                }
+                & #propeller-right{
+                    position:absolute;
+                    transform-style: preserve-3d;
+                    transform:translateZ(10px) translateY(-5px) translateX(-97.5px);
+                    background:#222;
+                    width:100px;
+                    height:10px;
+                }
+            }
+        }
         .fuse-panel {
             transform-style: preserve-3d;
             width: 100px;
@@ -24,8 +64,8 @@
                     top: -50px;
                     left: 0px;
                     border-bottom: 50px solid hsl(0, 0%, $sat);
-                    border-left: 16.6px solid transparent;
-                    border-right: 16.6px solid transparent;
+                    border-left: 8.3px solid transparent;
+                    border-right: 30px solid transparent;
                     transform: rotateX(17.74deg);
                 }
                 &:after {
@@ -54,8 +94,8 @@
                     top: -50px;
                     left: 0px;
                     border-bottom: 50px solid hsl(0, 0%, $sat);
-                    border-left: 16.6px solid transparent;
-                    border-right: 16.6px solid transparent;
+                    border-left: 30px solid transparent;
+                    border-right: 8.3px solid transparent;
                     transform: rotateX(17.74deg);
                 }
                 &:after {
@@ -86,7 +126,7 @@
                     border-bottom: 50px solid hsl(0, 0%, $sat);
                     border-left: 16.6px solid transparent;
                     border-right: 16.6px solid transparent;
-                    transform: rotateX(17.74deg);
+                    transform: rotateX(8.9deg);
                 }
                 &:after {
                     transform-origin: 0% 0%;
@@ -112,12 +152,12 @@
                     position: absolute;
                     width: 100px;
                     height: 0px;
-                    top: -50px;
+                    top: -58.3px;
                     left: 0px;
-                    border-bottom: 50px solid hsl(0, 0%, $sat);
+                    border-bottom: 58.3px solid rgba(50,50,50,.5);
                     border-left: 16.6px solid transparent;
                     border-right: 16.6px solid transparent;
-                    transform: rotateX(17.74deg);
+                    transform: rotateX(30.96deg);
                 }
                 &:after {
                     content: '';

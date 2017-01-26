@@ -9,8 +9,47 @@ app.factory('contFact', function($rootScope) {
                 y: diffy,
                 z: diffz,
                 u: u,
-                r:r
+                r: r
             });
+        },
+        cylMaker: function(rez, h, w, p, t, o, e, c) {
+            //height, width, parent(selector), translation, rotation (orientation), capped(boolean)
+            var cylCon = document.createElement('div');
+            cylCon.className = 'cyl-con';
+            document.querySelector(p).appendChild(cylCon);
+            //cylinder-specific vars
+            var rotAmt = 360 / rez;
+            var segw = (Math.PI * w * rotAmt / 360) + 1;
+            for (var i = 0; i < rez; i++) {
+                var newSeg = document.createElement('div');
+                newSeg.className = 'cyl-seg';
+                console.log('HUE INFO', c)
+                if (c) {
+                    newSeg.style.background = 'hsl(' + c.h + ',' + c.s + '%,' + ((c.v - 15) + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                } else {
+                    newSeg.style.background = 'hsl(0,0%,' + (40 + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                }
+                newSeg.style.width = segw + 'px';
+                newSeg.style.height = h + 'px';
+                newSeg.style.transform = 'rotateY(' + (rotAmt * i) + 'deg) translateZ(' + (w / 2) + 'px) translateY(' + (h / 2) + 'px)';
+                cylCon.appendChild(newSeg);
+                if (e === true) {
+                    var newTop = document.createElement('div');
+                    newTop.className = 'cyl-cap';
+                    newTop.style.borderLeft = (segw / 2) + 'px solid transparent';
+                    newTop.style.borderRight = (segw / 2) + 'px solid transparent';
+                    newTop.style.transform = 'rotateX(-90deg)';
+                    $(newSeg).append(newTop);
+                    var newBottom = document.createElement('div');
+                    newBottom.className = 'cyl-cap';
+                    newBottom.style.borderLeft = (segw / 2) + 'px solid transparent';
+                    newBottom.style.borderRight = (segw / 2) + 'px solid transparent';
+                    newBottom.style.transform = 'rotateX(-90deg) translateZ(' + h + 'px)';
+                    $(newSeg).append(newBottom);
+                }
+            }
+            //as a last step, we move the parent. Note that rotation happens AFTER translation.
+            $(cylCon).css({ 'transform': 'translateX(' + t.x + 'px) translateY(' + t.y + 'px) translateZ(' + t.z + 'px) rotateX(' + o.x + 'deg) rotateY(' + o.y + 'deg) rotateZ(' + o.z + 'deg)' });
         }
     };
 });
