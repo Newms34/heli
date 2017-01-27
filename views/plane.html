@@ -8,17 +8,30 @@
 </head>
 
 <body ng-app='heli' ng-controller='planecon' ng-cloak>
+    <div class='col-md-3'>
+        CONTROLS:
+        <ul>
+            <li><strong>S</strong> Toggle Rotate/Flight mode</li>
+            <li><strong>Q</strong> Increase throttle</li>
+            <li><strong>A</strong> Decrease throttle</li>
+        </ul>
+        <em>Disclaimer: Plane does not actually fly. Do not operate heavy equipment while under the effect of CSS3. Demo works best in Google Chrome. Does not work in MSIE/MSEdge.</em>
+    </div>
     <div id='plane-main' style='transform: translateZ(-100px) rotateX({{m.y}}deg) rotateY({{m.x}}deg);'>
         <div id='p-fuse'>
-            <div class='fuse-panel'></div>
-            <div class='fuse-panel'></div>
-            <div class='fuse-panel'></div>
-            <div class='fuse-panel'></div>
+            <div class='fuse-panel'>r
+                <div class='wheel' id='whl-right'></div>
+            </div>
+            <div class='fuse-panel'>l
+                <div class='wheel' id='whl-left'></div>
+            </div>
+            <div class='fuse-panel'>b</div>
+            <div class='fuse-panel'>t</div>
             <div id='fuse-front'>
                 <div id='prop-shaft' style='transform: rotateZ({{propRot}}deg);'>
                     <div id='prop-cyl-anchor'></div>
-                    <div id='propeller-left' style = 'filter:blur({{15*throt/200}}px)'></div>
-                    <div id='propeller-right' style = 'filter:blur({{15*throt/200}}px)'></div>
+                    <div id='propeller-left' style='filter:blur({{15*throt/200}}px)'></div>
+                    <div id='propeller-right' style='filter:blur({{15*throt/200}}px)'></div>
                 </div>
             </div>
         </div>

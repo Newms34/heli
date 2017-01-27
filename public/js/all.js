@@ -365,7 +365,20 @@ app.controller('planecon', function($scope,contFact) {
     $scope.throt = 0;
     $scope.propRot = 0;
     $scope.moveMode = true;
-    contFact.cylMaker(15,15,5,'#prop-cyl-anchor',{x:0,y:0,z:-10},{x:90,y:0,z:0},false,{h:0,s:0,v:20})
+    //cylinder for the prop
+    contFact.cylMaker(15,15,5,'#prop-cyl-anchor',{x:2,y:2,z:-10},{x:90,y:0,z:0},false,{h:0,s:0,v:20})
+    //right leg
+    contFact.cylMaker(15,60,7,'.fuse-panel:nth-of-type(1)',{x:30,y:0,z:-15},{x:0,y:30,z:70},false);
+    contFact.cylMaker(15,60,7,'.fuse-panel:nth-of-type(1)',{x:30,y:60,z:-15},{x:0,y:30,z:110},false);
+    //left leg
+    contFact.cylMaker(15,60,7,'.fuse-panel:nth-of-type(2)',{x:70,y:0,z:-15},{x:0,y:150,z:70},false);
+    contFact.cylMaker(15,60,7,'.fuse-panel:nth-of-type(2)',{x:70,y:60,z:-15},{x:0,y:150,z:110},false);
+
+    //right wheel
+    contFact.cylMaker(15,7,45,'#whl-right',{x:0,y:0,z:25},{x:90,y:0,z:0},true,{h:0,s:0,v:20});
+
+    //left wheel
+    contFact.cylMaker(15,7,45,'#whl-left',{x:0,y:0,z:25},{x:90,y:0,z:0},true,{h:0,s:0,v:20});
     window.onmousemove = function(e) {
         if ($scope.moveMode) {
             $scope.m.x = e.x || e.clientX;
@@ -391,6 +404,7 @@ app.controller('planecon', function($scope,contFact) {
     }
     var engine = setInterval(function(){
     	$scope.propRot+=$scope.throt;
+    	$scope.propRot = $scope.propRot%360;//prevent overflow!
     	// document.querySelector('#prop-shaft');
     	$scope.$digest();
     },40)
@@ -435,12 +449,22 @@ app.factory('contFact', function($rootScope) {
                 if (e === true) {
                     var newTop = document.createElement('div');
                     newTop.className = 'cyl-cap';
+                    if (c) {
+                        newTop.style.borderTop = (w / 2) + 'px solid hsl(' + c.h + ',' + c.s + '%,' + ((c.v - 15) + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                    } else {
+                        newTop.style.borderTop = (w / 2) + 'px solid hsl(0,0%,' + (30 + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                    }
                     newTop.style.borderLeft = (segw / 2) + 'px solid transparent';
                     newTop.style.borderRight = (segw / 2) + 'px solid transparent';
                     newTop.style.transform = 'rotateX(-90deg)';
                     $(newSeg).append(newTop);
                     var newBottom = document.createElement('div');
                     newBottom.className = 'cyl-cap';
+                    if (c) {
+                    newBottom.style.borderTop = (w / 2) + 'px solid hsl(' + c.h + ',' + c.s + '%,' + ((c.v - 15) + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                } else {
+                    newBottom.style.borderTop = (w / 2) + 'px solid hsl(0,0%,' + (30 + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                }
                     newBottom.style.borderLeft = (segw / 2) + 'px solid transparent';
                     newBottom.style.borderRight = (segw / 2) + 'px solid transparent';
                     newBottom.style.transform = 'rotateX(-90deg) translateZ(' + h + 'px)';

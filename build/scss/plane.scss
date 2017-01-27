@@ -6,43 +6,43 @@
     perspective: 1500px;
     #p-fuse {
         transform-style: preserve-3d;
-        #fuse-front{
-            transform-origin:0% 0%;
+        #fuse-front {
+            transform-origin: 0% 0%;
             transform-style: preserve-3d;
-            position:absolute;
+            position: absolute;
             $sat: random(30)+30;
             background: hsl(0, 0%, $sat);
-            width:69px;
-            height:61.7px;
+            width: 69px;
+            height: 61.7px;
             transform: rotateX(90deg) translateZ(50px) translateX(16px) translateY(-20px);
-            #prop-shaft{
-                transform-origin:50% 50%;
-                position:absolute;
+            #prop-shaft {
+                transform-origin: 50% 50%;
+                position: absolute;
                 left: 32px;
-                top:28.35px;
-                width:5px;
-                height:5px;
+                top: 28.35px;
+                width: 5px;
+                height: 5px;
                 transform-style: preserve-3d;
-                background:#555;
-                & #prop-cyl-anchor{
-                    position:absolute;
+                background: #555;
+                & #prop-cyl-anchor {
+                    position: absolute;
                     transform-style: preserve-3d;
                 }
-                & #propeller-left{
-                    position:absolute;
+                & #propeller-left {
+                    position: absolute;
                     transform-style: preserve-3d;
-                    transform:translateZ(10px) translateY(-5px);
-                    background:#222;
-                    width:100px;
-                    height:10px;
+                    transform: translateZ(10px) translateY(-5px);
+                    background: linear-gradient(to right, #222 90%, #cc0 91%);
+                    width: 100px;
+                    height: 10px;
                 }
-                & #propeller-right{
-                    position:absolute;
+                & #propeller-right {
+                    position: absolute;
                     transform-style: preserve-3d;
-                    transform:translateZ(10px) translateY(-5px) translateX(-97.5px);
-                    background:#222;
-                    width:100px;
-                    height:10px;
+                    transform: translateZ(10px) translateY(-5px) translateX(-97.5px);
+                    background: linear-gradient(to left, #222 90%, #cc0 91%);
+                    width: 100px;
+                    height: 10px;
                 }
             }
         }
@@ -154,7 +154,7 @@
                     height: 0px;
                     top: -58.3px;
                     left: 0px;
-                    border-bottom: 58.3px solid rgba(50,50,50,.5);
+                    border-bottom: 58.3px solid rgba(50, 50, 50, .5);
                     border-left: 16.6px solid transparent;
                     border-right: 16.6px solid transparent;
                     transform: rotateX(30.96deg);
@@ -170,6 +170,22 @@
                     border-left: 50px solid transparent;
                     border-right: 50px solid transparent;
                 }
+            }
+            & .wheel {
+                position: absolute;
+                transform-style: preserve-3d;
+                width: 1px;
+                height: 1px;
+                background: #f00;
+                transform-origin: 0% 0%;
+            }
+            & #whl-left {
+                transform-style: preserve-3d;
+                transform: translateX(140px) translateY(30px) translateX(0px);
+            }
+            & #whl-right {
+                transform-style: preserve-3d;
+                transform: translateX(-50px) translateY(30px) translateX(0px);
             }
         }
     }

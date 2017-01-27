@@ -36,12 +36,22 @@ app.factory('contFact', function($rootScope) {
                 if (e === true) {
                     var newTop = document.createElement('div');
                     newTop.className = 'cyl-cap';
+                    if (c) {
+                        newTop.style.borderTop = (w / 2) + 'px solid hsl(' + c.h + ',' + c.s + '%,' + ((c.v - 15) + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                    } else {
+                        newTop.style.borderTop = (w / 2) + 'px solid hsl(0,0%,' + (30 + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                    }
                     newTop.style.borderLeft = (segw / 2) + 'px solid transparent';
                     newTop.style.borderRight = (segw / 2) + 'px solid transparent';
                     newTop.style.transform = 'rotateX(-90deg)';
                     $(newSeg).append(newTop);
                     var newBottom = document.createElement('div');
                     newBottom.className = 'cyl-cap';
+                    if (c) {
+                    newBottom.style.borderTop = (w / 2) + 'px solid hsl(' + c.h + ',' + c.s + '%,' + ((c.v - 15) + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                } else {
+                    newBottom.style.borderTop = (w / 2) + 'px solid hsl(0,0%,' + (30 + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
+                }
                     newBottom.style.borderLeft = (segw / 2) + 'px solid transparent';
                     newBottom.style.borderRight = (segw / 2) + 'px solid transparent';
                     newBottom.style.transform = 'rotateX(-90deg) translateZ(' + h + 'px)';
