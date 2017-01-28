@@ -89,15 +89,16 @@ app.controller('planecon', function($scope, contFact) {
     $scope.submitCode = function() {
         socket.emit('registerPhones', { joy: $scope.phoneIdCand, desk: $scope.user })
         $scope.phoneId = $scope.phoneIdCand;
+        document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(75deg) rotateY(180deg)'
     };
     socket.on('oriToDesk', function(ori) {
         if (ori.u == $scope.user) {
             //ori cmd is for this instance;
             if (ori.r == 'joy') {
                 $scope.elev = ori.x;
-                $scope.rud = ori.z;
-                $scope.leftAil = ori.y;
-                $scope.rightAil = 0-ori.y;
+                $scope.rud = 0-ori.z;
+                $scope.leftAil = 0-ori.y;
+                $scope.rightAil = ori.y;
                 $scope.$digest();
             }
             $scope.$apply();
