@@ -291,7 +291,7 @@ app.controller('helicon', function($scope, movFact) {
                 $scope.tiltFB = newOri.FB;
                 $scope.tiltRL = newOri.RL;
                 $scope.pedals = newOri.pedals;
-            } else {
+            } else if(ori.r =='joy'){
                 $scope.curBladeRot = movFact.handlePhoneCol(ori);
             }
             $scope.$apply();

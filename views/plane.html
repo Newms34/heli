@@ -8,16 +8,32 @@
 </head>
 
 <body ng-app='heli' ng-controller='planecon' ng-cloak>
-    <div class='col-md-3'>
-        CONTROLS:
-        <ul>
-            <li><strong>S</strong> Toggle Rotate/Flight mode</li>
-            <li><strong>Q</strong> Increase throttle</li>
-            <li><strong>A</strong> Decrease throttle</li>
-        </ul>
-        <em>Disclaimer: Plane does not actually fly. Do not operate heavy equipment while under the effect of CSS3. Demo works best in Google Chrome. Does not work in MSIE/MSEdge.</em>
+    <div class='col-md-6 col-md-offset-3 panel panel-primary' ng-show='!phoneId'>
+        <div class='panel-heading'>Setup</div>
+        <div class='panel-body'>
+            <h3>Enter a Phone ID Code &#128241;</h3>
+            <hr/>
+            <div class='row'>
+                <div class='col-md-3 col-md-offset-2'>
+                    <label for='phone-id-cand'>Phone ID Code &#128241;</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" id="phone-id-cand" ng-model='phoneIdCand' ng-change='testPhone()'/>
+                </div>
+                <div class='col-md-1'>
+                    <button class='btn btn-sm btn-danger' ng-click='explCode()'>?</button>
+                </div>
+            </div>
+            <div class='row' ng-show='phoneValid==false'>
+                <div class='alert alert-danger'>ERROR: This code is either already being used, or is not a valid code! Please pick another!</div>
+            </div>
+            <div class='row'>
+            <hr>
+                <button class='btn btn-primary btn-lg col-md-offset-5' ng-disabled='!phoneValid' ng-click='submitCode();'>&#128241; Use Code</button>
+            </div>
+        </div>
     </div>
-    <div id='plane-main' style='transform: translateZ(-100px) rotateX({{m.y}}deg) rotateY({{m.x}}deg);'>
+    <div id='plane-main' style='transform: translateZ(-100px) rotateX({{m.y}}deg) rotateY({{m.x}}deg);' ng-show='phoneId'>
         <div id='p-fuse'>
             <div class='fuse-panel'>r
                 <div class='wheel' id='whl-right'></div>

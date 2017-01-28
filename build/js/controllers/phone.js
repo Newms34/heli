@@ -22,11 +22,11 @@ app.controller('phone-con', function($scope,contFact) {
     });
     $scope.showInf = function(n) {
         if (!n) {
-            bootbox.alert('Enter this automatically-generated phone code for either the cyclic or collective on the desktop site.');
+            bootbox.alert('Enter this automatically-generated phone code for the cyclic, collective, or joystick on the desktop site.');
         } else if (n == 1) {
             bootbox.alert('The game code corresponds to the particular "instance" of the desktop site your phone is connected with.');
         } else {
-            bootbox.alert('If set to collective, your phone controls average blade angle. If set to cyclic, your phone controls, generally speaking, the direction of the craft.');
+            bootbox.alert('If set to collective, your phone controls average blade angle. If set to cyclic, your phone controls, generally speaking, the direction of the craft. Finally, if set to joystick, the phone acts as an airplane joystick (plane mode only).');
         }
     };
     $scope.setZero = function() {

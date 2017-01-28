@@ -23,7 +23,6 @@ app.factory('contFact', function($rootScope) {
             for (var i = 0; i < rez; i++) {
                 var newSeg = document.createElement('div');
                 newSeg.className = 'cyl-seg';
-                console.log('HUE INFO', c)
                 if (c) {
                     newSeg.style.background = 'hsl(' + c.h + ',' + c.s + '%,' + ((c.v - 15) + (30 * Math.abs(i - (rez / 2)) / (rez / 2))) + '%)';
                 } else {

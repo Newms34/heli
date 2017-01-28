@@ -34,11 +34,11 @@ var io = require('socket.io')(http);
 4.) send phone code + desktop UN to server. 
 5.) pipe thru to phone via phone code. Phone registers username of desktop.
 */
-var pendingPhoneCodes = ['dave123','dave321']; //list of phone codes that have not yet been assigned. Includes test phone code.
+var pendingPhoneCodes = ['dave123', 'dave321']; //list of phone codes that have not yet been assigned. Includes test phone code.
 io.on('connection', function(socket) {
     socket.on('newPhone', function(phone) {
         pendingPhoneCodes.push(phone);
-        console.log('PHONES:',pendingPhoneCodes)
+        console.log('PHONES:', pendingPhoneCodes)
     });
     socket.on('moveData', function(moveObj) {
         io.emit('outData', moveObj);
@@ -53,11 +53,11 @@ io.on('connection', function(socket) {
         io.emit('phoneCheckResult', phoneObj)
     });
     socket.on('registerPhones', function(p) {
-        console.log('REGISTER PHONE SERVER',p)
+        console.log('REGISTER PHONE SERVER', p)
         if (p.cyc) {
             //this phone is no longer 'available' for use
-            pendingPhoneCodes.splice(pendingPhoneCodes.indexOf(p.cyc, 1));
-            console.log('registering cyc',p.cyc)
+            pendingPhoneCodes.splice(pendingPhoneCodes.indexOf(p.cyc), 1);
+            console.log('registering cyc', p.cyc)
             io.emit('regPhone', {
                 u: p.desk,
                 name: p.cyc,
@@ -66,18 +66,34 @@ io.on('connection', function(socket) {
         }
         if (p.col) {
             //this phone is no longer 'available' for use
-            pendingPhoneCodes.splice(pendingPhoneCodes.indexOf(p.col, 1));
-            console.log('registering col',p.col)
+            pendingPhoneCodes.splice(pendingPhoneCodes.indexOf(p.col), 1);
+            console.log('registering col', p.col)
             io.emit('regPhone', {
                 u: p.desk,
                 name: p.col,
                 role: 'col'
             })
         }
+        if (p.joy) {
+            pendingPhoneCodes.splice(pendingPhoneCodes.indexOf(p.joy), 1);
+            io.emit('regPhone', {
+                name: p.joy,
+                u: p.desk,
+                role: 'joy'
+            })
+        }
     });
-    socket.on('phoneOri',function(ori){
+    socket.on('pRegisterPhones', function(p) {
+        pendingPhoneCodes.splice(pendingPhoneCodes.indexOf(p.joy), 1);
+        io.emit('regPhone', {
+            name: p.joy,
+            u: p.desk,
+            role: 'joy'
+        })
+    })
+    socket.on('phoneOri', function(ori) {
         //just pipe thru to front end 
-        io.emit('oriToDesk',ori);
+        io.emit('oriToDesk', ori);
     })
 });
 io.on('error', function(err) {
