@@ -18,7 +18,7 @@
                     <label for='phone-id-cand'>Phone ID Code &#128241;</label>
                 </div>
                 <div class="col-md-3">
-                    <input type="text" id="phone-id-cand" ng-model='phoneIdCand' ng-change='testPhone()'/>
+                    <input type="text" id="phone-id-cand" ng-model='phoneIdCand' ng-change='testPhone()' />
                 </div>
                 <div class='col-md-1'>
                     <button class='btn btn-sm btn-danger' ng-click='explCode()'>?</button>
@@ -28,7 +28,7 @@
                 <div class='alert alert-danger'>ERROR: This code is either already being used, or is not a valid code! Please pick another!</div>
             </div>
             <div class='row'>
-            <hr>
+                <hr>
                 <button class='btn btn-primary btn-lg col-md-offset-5' ng-disabled='!phoneValid' ng-click='submitCode();'>&#128241; Use Code</button>
             </div>
         </div>
@@ -71,8 +71,15 @@
             <div id='elev' style='transform:translateY(90px) rotateX({{elev}}deg);'></div>
         </div>
     </div>
-    <div id='world' ng-show='phoneId' style='transform:rotateZ({{worldRot.z}}deg) rotateX({{worldRot.x}}deg) rotateY({{worldRot.y}}deg);'>
-        <div id='ground' style='background-position:{{groundDisp.x||0}}px {{groundDisp.y||0}}px;'></div>
+    <div id='world' ng-show='phoneId' style='transform:translateZ(1000px) rotateZ({{worldRot.z}}deg) rotateX({{worldRot.x}}deg) rotateY({{worldRot.y}}deg);'>
+        <div id='world-inner'>
+            <div id='ground' style='background-position:{{groundDisp.x||0}}px {{groundDisp.y||0}}px;'>
+                <div class='world-wall'></div>
+                <div class='world-wall'></div>
+                <div class='world-wall'></div>
+                <div class='world-wall'></div>
+            </div>
+        </div>
     </div>
     <script src='https://cdn.socket.io/socket.io-1.2.0.js'></script>
     <script src="/jquery/dist/jquery.min.js"></script>

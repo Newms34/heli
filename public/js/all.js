@@ -392,15 +392,14 @@ app.controller('planecon', function($scope, contFact) {
     var testMode = false;
     contFact.cylMaker(15, 7, 45, '#whl-left', { x: 0, y: 0, z: 25 }, { x: 90, y: 0, z: 0 }, true, { h: 0, s: 0, v: 20 });
     window.onmousemove = function(e) {
-        if ($scope.moveMode && !$scope.phoneId) {
-            $scope.m.x = e.x || e.clientX;
-            $scope.m.y = e.y || e.clientY;
-        } else if (!$scope.phoneId || testMode) {
+        if ($scope.moveMode && (!$scope.phoneId || testMode)) {
             $scope.elev = 60 * (((e.y || e.clientY) / $(document).height()) - .5);
             $scope.rud = -60 * (((e.x || e.clientX) / $(document).width()) - .5);
             $scope.leftAil = 30 * (((e.x || e.clientX) / $(document).width()) - .5);
             $scope.rightAil = -30 * (((e.x || e.clientX) / $(document).width()) - .5);
-        } else {
+            $scope.worldRot.z = e.x || e.clientX;
+            $scope.worldRot.x = e.y || e.clientY;
+        } else if (!testMode) {
             $scope.throt = 200 * (1 - ((e.y || e.clientY) / $(document).height()));
         }
         $scope.$digest();
@@ -421,7 +420,9 @@ app.controller('planecon', function($scope, contFact) {
         $scope.propRot += $scope.throt;
         $scope.propRot = $scope.propRot % 360; //prevent overflow!
         $scope.groundDisp.y -= $scope.throt / 10;
-        $scope.handleSurfaces();
+        if (!testMode) {
+            $scope.handleSurfaces();
+        }
         $scope.$digest();
     }, 40)
     $scope.explCode = function() {
@@ -455,13 +456,22 @@ app.controller('planecon', function($scope, contFact) {
     $scope.submitCode = function() {
         socket.emit('registerPhones', { joy: $scope.phoneIdCand, desk: $scope.user })
         $scope.phoneId = $scope.phoneIdCand;
-        document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(75deg) rotateY(180deg)'
+        if ($scope.phoneIdCand == 'dave123') {
+            testMode = true;
+        } else {
+            $scope.worldRot = {
+                x: 0,
+                y: 0,
+                z: 0
+            }
+        }
+        document.querySelector('#plane-main').style.transform = 'translateZ(-130px) translateY(40px) rotateX(90deg) rotateY(180deg)'
     };
     $scope.handleSurfaces = function() {
         //surfaces range from 0-35 in either direction
-        $scope.worldRot.x-=($scope.elev/35)*($scope.throt/150);
-        $scope.worldRot.y-=($scope.rud/35)*($scope.throt/150);
-        $scope.worldRot.z+=($scope.rightAil/35)*($scope.throt/150);
+        $scope.worldRot.x -= ($scope.elev / 35) * ($scope.throt / 150);
+        $scope.worldRot.y -= ($scope.rud / 35) * ($scope.throt / 150);
+        $scope.worldRot.z += ($scope.rightAil / 35) * ($scope.throt / 150);
         $scope.$digest();
     };
     socket.on('oriToDesk', function(ori) {
@@ -474,7 +484,7 @@ app.controller('planecon', function($scope, contFact) {
                 $scope.rightAil = (.5 * ori.y);
                 $scope.$digest();
             }
-           
+
             $scope.$apply();
         }
     });

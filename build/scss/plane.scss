@@ -290,16 +290,47 @@
         }
     }
 }
-#world{
+
+#world {
     transform-style: preserve-3d;
-    position:absolute;
-    #ground{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform-origin: 0% 50% 0px;
+    left: 39%;
+    top: 40%;
+    #world-inner {
         transform-style: preserve-3d;
-        position:absolute;
-        background:url('../img/grass.jpg');
-        width:10000px;
-        height:10000px;
-        transform-origin:0% 0%;
-        transform:rotateX(-90deg) translateZ(440px) translateY(-409px) translateX(-420px);
+        position: absolute;
+        #ground {
+            transform-style: preserve-3d;
+            position: absolute;
+            background: url('../img/grass.jpg');
+            width: 10000px;
+            height: 10000px;
+            transform-origin: 0% 0%;
+            transform: rotateX(-90deg) translateZ(167px) translateY(-309px) translateX(-5000px);
+            .world-wall {
+                transform-style: preserve-3d;
+                position:absolute;
+                transform-origin:50% 50%;
+                background: linear-gradient(to top, #99f, #ccf);
+                width: 10000px;
+                // backface-visibility:hidden;
+                height: 10000px;
+                &:nth-of-type(1){
+                    transform:rotateX(-90deg) translateZ(-2500px) translateY(5000px);
+                }
+                &:nth-of-type(2){
+                    transform:rotateX(-90deg) translateZ(-2500px) translateY(5000px);
+                }
+                &:nth-of-type(3){
+                    transform:rotateX(-90deg) rotateY(-90deg) translateZ(2500px) translateY(5000px);
+                }
+                &:nth-of-type(4){
+                    transform:rotateX(-90deg) rotateY(-90deg) translateZ(-2500px) translateY(5000px);
+                }
+            }
+        }
     }
 }
