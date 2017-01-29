@@ -100,13 +100,13 @@ app.controller('planecon', function($scope, contFact) {
     $scope.submitCode = function() {
         socket.emit('registerPhones', { joy: $scope.phoneIdCand, desk: $scope.user })
         $scope.phoneId = $scope.phoneIdCand;
-        document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(90deg) rotateY(180deg)'
+        document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(75deg) rotateY(180deg)'
     };
     $scope.handleSurfaces = function() {
         //surfaces range from 0-35 in either direction
-        $scope.worldRot.x-=$scope.elev/35;
-        $scope.worldRot.y+=$scope.rud/35;
-        $scope.worldRot.z+=$scope.rightAil/35;
+        $scope.worldRot.x-=($scope.elev/35)*($scope.throt/150);
+        $scope.worldRot.y-=($scope.rud/35)*($scope.throt/150);
+        $scope.worldRot.z+=($scope.rightAil/35)*($scope.throt/150);
         $scope.$digest();
     };
     socket.on('oriToDesk', function(ori) {
