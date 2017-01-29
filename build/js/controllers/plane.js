@@ -66,6 +66,7 @@ app.controller('planecon', function($scope, contFact) {
         $scope.propRot += $scope.throt;
         $scope.propRot = $scope.propRot % 360; //prevent overflow!
         $scope.groundDisp.y -= $scope.throt / 10;
+        $scope.handleSurfaces();
         $scope.$digest();
     }, 40)
     $scope.explCode = function() {
@@ -117,7 +118,7 @@ app.controller('planecon', function($scope, contFact) {
                 $scope.rightAil = (.5 * ori.y);
                 $scope.$digest();
             }
-            $scope.handleSurfaces();
+           
             $scope.$apply();
         }
     });
