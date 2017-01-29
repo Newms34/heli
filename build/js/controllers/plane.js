@@ -106,7 +106,8 @@ app.controller('planecon', function($scope, contFact) {
         //surfaces range from 0-35 in either direction
         $scope.worldRot.x+=$scope.elev/35;
         $scope.worldRot.y+=$scope.rightAil/35;
-        $scope.worldRot.z+=$scope.rud/35 
+        $scope.worldRot.z+=$scope.rud/35;
+        $scope.$digest();
     };
     socket.on('oriToDesk', function(ori) {
         if (ori.u == $scope.user) {

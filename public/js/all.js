@@ -421,6 +421,7 @@ app.controller('planecon', function($scope, contFact) {
         $scope.propRot += $scope.throt;
         $scope.propRot = $scope.propRot % 360; //prevent overflow!
         $scope.groundDisp.y -= $scope.throt / 10;
+        $scope.handleSurfaces();
         $scope.$digest();
     }, 40)
     $scope.explCode = function() {
@@ -457,7 +458,10 @@ app.controller('planecon', function($scope, contFact) {
         document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(90deg) rotateY(180deg)'
     };
     $scope.handleSurfaces = function() {
-
+        //surfaces range from 0-35 in either direction
+        $scope.worldRot.x+=$scope.elev/35;
+        $scope.worldRot.y+=$scope.rightAil/35;
+        $scope.worldRot.z+=$scope.rud/35 
     };
     socket.on('oriToDesk', function(ori) {
         if (ori.u == $scope.user) {
@@ -469,7 +473,7 @@ app.controller('planecon', function($scope, contFact) {
                 $scope.rightAil = (.5 * ori.y);
                 $scope.$digest();
             }
-            $scope.handleSurfaces();
+           
             $scope.$apply();
         }
     });
