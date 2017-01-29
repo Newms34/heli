@@ -71,6 +71,9 @@
             <div id='elev' style='transform:translateY(90px) rotateX({{elev}}deg);'></div>
         </div>
     </div>
+    <div id='world' ng-show='phoneId' style='transform:rotateZ({{worldRot.z}}deg) rotateX({{worldRot.x}}deg) rotateY({{worldRot.y}}deg);'>
+        <div id='ground' style='background-position:{{groundDisp.x||0}}px {{groundDisp.y||0}}px;'></div>
+    </div>
     <script src='https://cdn.socket.io/socket.io-1.2.0.js'></script>
     <script src="/jquery/dist/jquery.min.js"></script>
     <script src="/bootstrap/dist/js/bootstrap.min.js"></script>

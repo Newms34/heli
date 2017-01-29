@@ -362,6 +362,15 @@ app.controller('planecon', function($scope, contFact) {
     $scope.rud = 0;
     $scope.leftAil = 0;
     $scope.rightAil = 0;
+    $scope.groundDisp = {
+        x: 0,
+        y: 0
+    };
+    $scope.worldRot = {
+        x: 0,
+        y: 0,
+        z: 0
+    };
     $scope.throt = 0;
     $scope.propRot = 0;
     $scope.user = Math.floor(Math.random() * 999999999).toString(32); //randomly chosen username
@@ -386,13 +395,13 @@ app.controller('planecon', function($scope, contFact) {
         if ($scope.moveMode && !$scope.phoneId) {
             $scope.m.x = e.x || e.clientX;
             $scope.m.y = e.y || e.clientY;
-        } else if(!$scope.phoneId || testMode){
+        } else if (!$scope.phoneId || testMode) {
             $scope.elev = 60 * (((e.y || e.clientY) / $(document).height()) - .5);
             $scope.rud = -60 * (((e.x || e.clientX) / $(document).width()) - .5);
             $scope.leftAil = 30 * (((e.x || e.clientX) / $(document).width()) - .5);
             $scope.rightAil = -30 * (((e.x || e.clientX) / $(document).width()) - .5);
-        }else{
-        	$scope.throt = 200*(1-((e.y || e.clientY) / $(document).height())) - 5;
+        } else {
+            $scope.throt = 200 * (1 - ((e.y || e.clientY) / $(document).height()));
         }
         $scope.$digest();
     }
@@ -408,9 +417,10 @@ app.controller('planecon', function($scope, contFact) {
         }
     }
     var engine = setInterval(function() {
+        //main timer
         $scope.propRot += $scope.throt;
         $scope.propRot = $scope.propRot % 360; //prevent overflow!
-        // document.querySelector('#prop-shaft');
+        $scope.groundDisp.y -= $scope.throt / 10;
         $scope.$digest();
     }, 40)
     $scope.explCode = function() {
@@ -444,18 +454,22 @@ app.controller('planecon', function($scope, contFact) {
     $scope.submitCode = function() {
         socket.emit('registerPhones', { joy: $scope.phoneIdCand, desk: $scope.user })
         $scope.phoneId = $scope.phoneIdCand;
-        document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(75deg) rotateY(180deg)'
+        document.querySelector('#plane-main').style.transform = 'translateZ(-100px) rotateX(90deg) rotateY(180deg)'
+    };
+    $scope.handleSurfaces = function() {
+
     };
     socket.on('oriToDesk', function(ori) {
         if (ori.u == $scope.user) {
             //ori cmd is for this instance;
             if (ori.r == 'joy') {
-                $scope.elev = ori.x;
-                $scope.rud = 0-ori.z;
-                $scope.leftAil = 0-ori.y;
-                $scope.rightAil = ori.y;
+                $scope.elev = (.5 * ori.x);
+                $scope.rud = 0 - (.5 * ori.z);
+                $scope.leftAil = 0 - (.5 * ori.y);
+                $scope.rightAil = (.5 * ori.y);
                 $scope.$digest();
             }
+            $scope.handleSurfaces();
             $scope.$apply();
         }
     });

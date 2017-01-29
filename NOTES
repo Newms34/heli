@@ -1,18 +1,8 @@
-box shadow attempt (to deal with css filter clipping):
-need to look into triangles as suplemental dist
+represent plane as bounding box (l*w*h)
 
-box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
-box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
-box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
-box-shadow:0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1),0 0 {{30*currEngSpeed/200}}px {{30*currEngSpeed/200}}px hsla(0,0%,0%,1);
+NEED TO FIGURE OUT VECTOR MATH: percent vector in each direction.
+	vector coords from magnitude, 1-3 angles
 
-the power of pull marketting
-$: 
-MENTOR - 4950
-PARTNER - 7800
+likely move WORLD, not PLANE.
 
-wats worth investing in?
-
-where will u b in 6months?
-
-how would having job u really <3 impact ur life
+https://jsfiddle.net/L0zaxsnh/7/ get vectors from 2-3 angles
